@@ -4,4 +4,4 @@ Id: porlar
 
 Each class collection of [solved](https://solved.ac/)
  or
- awesome🤩🤩🤩
+ awesome🤩🤩
