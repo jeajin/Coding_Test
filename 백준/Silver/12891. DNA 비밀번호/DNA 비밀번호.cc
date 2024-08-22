@@ -51,29 +51,16 @@ int main(){
 	temp=s-1;
 	int index=0;
 	int count=0;
-	temp = 0;
-	int aa,cc,gg,tt;
-	while(move){
-		do{
+	while(move--){
+		
 			setMinusACGT(str[index],str[(index)+p],&flag);
-			index++;
-			move--;			
-			if(index+p >s+1){
-				move =0;
-				break;
-			}
-		}while(temp--);
-		aa = a-flag.a;
-		cc = c-flag.c;
-		gg = g-flag.g;
-		tt = t-flag.t;
-		if (0>=aa && 0>=cc && flag.g>=g && flag.t>=t) {
+	
+		
+		if (flag.a>=a && flag.c>=c && flag.g>=g && flag.t>=t) {
             count++;
-            temp=0;
-        }else{
-        	temp = (aa > 0?aa:0) + (cc > 0?cc:0) + (gg > 0?gg:0)  + (tt > 0?tt:0)-1; 
-        	if (temp <= 0) temp = 0;
-		}
+        }
+      
+		index++;
 	}
 	printf("%d",count);
     return 0;
