@@ -22,11 +22,13 @@ int main() {
 
     deque<A> dq;
     for (int i = 0; i < N; ++i) {
-        if (!dq.empty() && i == dq.front().index + L) 
-            dq.pop_front();
-        while (!dq.empty() && dq.back().num > arr[i])
+    	while (!dq.empty() && dq.back().num > arr[i])
             dq.pop_back();
-        dq.push_back({ arr[i], i }); 
+ 		dq.push_back({ arr[i], i });   	
+ 		
+        if (dq.front().index <= i-L) 
+            dq.pop_front();
+        
         cout << dq.front().num << " "; 
     }
 }
