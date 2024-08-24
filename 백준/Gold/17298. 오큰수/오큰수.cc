@@ -1,10 +1,7 @@
 #include <iostream>
 #include <deque>
 using namespace std;
-struct p {
-    int num;
-    int index; 
-};
+
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(NULL); 
@@ -14,19 +11,19 @@ int main() {
     cin >> N ;
     
     int A[N];
-    deque<p> dq;
+    int dq[N],dq_index=0;
     int temp;
     for( int i = 0 ; i < N ; i++ ){
     	cin >> temp ;
-    	while(!dq.empty() && dq.back().num < temp){
-    		A[dq.back().index]=temp;
-    		dq.pop_back();
+    	while(dq_index && A[dq[dq_index-1]] < temp){
+    		A[dq[--dq_index]]=temp;
 		}
-		dq.push_back({temp,i});
+		A[i]=temp;
+		dq[dq_index++]=i;
 	}
-	while(!dq.empty()){
-    	A[dq.back().index]=-1;
-    	dq.pop_back();
+	
+	while(dq_index){
+    	A[dq[--dq_index]]=-1;
 	}
     
     for(int i=0;i<N;i++){
