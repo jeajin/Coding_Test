@@ -1,65 +1,63 @@
+#include <iostream>
 #include <bits/stdc++.h> 
 using namespace std;
-const int INF = 2e9;
-const int inf = 1e9;
-
-long long sorted[500001];
 vector<long long> arr;
-long long ans = 0;
+long long temp[500001];
+long long r = 0;
 
-void merge(int left, int mid, int right) {
-	int i = left;
-	int j = mid + 1;
-	int k = left;
-	while (i <= mid && j <= right) {
-		if (arr[i] <= arr[j]) {
-			sorted[k] = arr[i];
-			i++;
-		}
-		else {
-			sorted[k] = arr[j];
-			ans += j - k;
-			j++;
-		}
-		k++;
+
+void bubb(int s,int e,int m){
+	for(int i=s;i<=e;i++){
+		temp[i] = arr[i];
 	}
-	if (i > mid) {
-		for (int x = j; x <= right; x++) {
-			sorted[k] = arr[x];
+	int k =s;
+	int i1 =s;
+	int i2 =m+1;
+	while((i1<=m) && (i2<=e)){
+		if(temp[i1] >temp[i2]){
+			r = r + i2 - k ;
+			arr[k]=temp[i2];
+			i2++;
+			k++;
+		}else{
+			arr[k]=temp[i1];
+			i1++;
 			k++;
 		}
+	}	
+	while(i1<=m){
+		arr[k]=temp[i1];
+		i1++;
+		k++; 
 	}
-	else {
-		for (int x = i; x <= mid; x++) {
-			sorted[k] = arr[x];
-			k++;
-		}
-	}
-	for (int x = left; x <= right; x++) {
-		arr[x] = sorted[x];
+	while(i2<=e){
+		arr[k]=temp[i2];
+		i2++;
+		k++;		
 	}
 }
 
-void merge_sort(int left, int right) {
-	if (left >= right) return;
-	int mid = (left + right) >> 1;
-	merge_sort(left, mid);
-	merge_sort(mid + 1, right);
-	merge(left, mid, right);
-}
-
-int main(void){
-	ios_base::sync_with_stdio(false);
-	cin.tie(NULL);
+void bubble_sort(int s, int e) {
 	
-	int n;
-	cin >> n;
-	for (int i = 0; i < n; i++) {
-		int k;
-		cin >> k;
-		arr.push_back(k);
+	if((e-s)<1) return;
+	int m =(e + s) >> 1;
+	bubble_sort(s,m);
+	bubble_sort(m+1,e);
+	bubb(s,e,m);
+	
+}
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(NULL); 
+    cout.tie(NULL);    
+    int N;
+    cin >> N;    
+    int t;
+    for(int i=0;i<N;i++){
+		cin >> t;
+		arr.push_back(t);
 	}
-	merge_sort(0, n - 1);
-	cout << ans;
-	return 0;
+	bubble_sort(0,N-1);	
+	printf("%lld",r);
 }
