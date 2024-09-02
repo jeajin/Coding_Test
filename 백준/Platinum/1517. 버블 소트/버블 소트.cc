@@ -1,8 +1,8 @@
 #include <iostream>
 #include <bits/stdc++.h> 
 using namespace std;
-vector<long long> arr;
-long long temp[500001];
+vector<int> arr;
+int temp[500001];
 long long r = 0;
 
 
