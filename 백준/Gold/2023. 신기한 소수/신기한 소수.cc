@@ -1,13 +1,11 @@
 #include <iostream>
-#include <algorithm>
-#include <vector>
-#include <queue>
 
 using namespace std;
 int d;
 
 bool isprime(int num){
-	for(int i=2;i<(int)(num/2+1);i++){
+	int j = (int)(num/2+1);
+	for(int i=2;i<j;i++){
 		if(num%i==0){
 			return false;
 		}
