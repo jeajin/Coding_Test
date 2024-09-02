@@ -12,18 +12,17 @@ bool isprime(int num){
 	}
 	return true;
 }
-bool dfs(int num,int depth){
-	
-	if(!isprime(num)) return 0;
+bool dfs(int num,int depth){	
+
+	if(d==depth) printf("%d\n",num);
 	else{
-		if(d==depth) printf("%d\n",num);
-		else{
-			depth++;
-			for(int i=1;i<10;i+=2){
-				dfs(num*10+i,depth);
-			}
+		depth++;
+		for(int i=1;i<10;i+=2){
+			if(isprime(num*10+i))
+			dfs(num*10+i,depth);
 		}
 	}
+	
 	
 	return 1;
 
@@ -40,6 +39,4 @@ int main() {
 	dfs(3,1);
 	dfs(5,1);
 	dfs(7,1);
-	
-
 }
