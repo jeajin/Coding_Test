@@ -1,42 +1,32 @@
 #include <iostream>
-
+#include <vector>
 using namespace std;
-int d;
+int n;
 
-bool isprime(int num){
-	int j = (int)(num/2+1);
-	for(int i=2;i<j;i++){
-		if(num%i==0){
+bool is_prime(int number) {
+	for (int num = 2; num * num <= number; num++) {
+		if (number % num == 0)
 			return false;
-		}
 	}
 	return true;
 }
-bool dfs(int num,int depth){	
 
-	if(d==depth) printf("%d\n",num);
-	else{
-		depth++;
-		for(int i=1;i<10;i+=2){
-			if(isprime(num*10+i))
-			dfs(num*10+i,depth);
+void solve(int number, int length) {
+	if (length == n) {
+		cout << number << "\n";
+	}
+
+	for (int next_number = 1; next_number <= 9; next_number += 2) {
+		if(is_prime(number * 10 + next_number)) {
+			solve(number * 10 + next_number, length + 1);
 		}
 	}
-	
-	
-	return 1;
-
 }
-int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(NULL); 
-    cout.tie(NULL);    
-    
 
-	cin >> d ;
-	
-	dfs(2,1);
-	dfs(3,1);
-	dfs(5,1);
-	dfs(7,1);
+int main() {
+	cin >> n;
+	vector<int> start_number = { 2, 3, 5, 7 };
+	for (int idx = 0; idx < start_number.size(); idx++) {
+		solve(start_number[idx], 1);
+	}
 }
