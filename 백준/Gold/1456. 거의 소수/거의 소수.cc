@@ -31,8 +31,9 @@ int main() {
 		}		
 	}
 	
-	long long t;
+	double t;
 	long count=0;
+	double dendN = (double)endN;
 	for(long long i=2;i<=s2;i++){		
 		if(prime[i]){
 			t = i;
@@ -41,7 +42,7 @@ int main() {
 				if(t>=start){
 					count++;
 				}				
-			}while(t<=(endN/i));
+			}while(t<=(dendN/i));
 		}
 	}
 	printf("%ld",count);
