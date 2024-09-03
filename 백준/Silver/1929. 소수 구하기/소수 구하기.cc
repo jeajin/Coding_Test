@@ -1,5 +1,4 @@
 #include <iostream>
-#include <math.h>
 using namespace std;
 
 int prime[1000001];
@@ -22,24 +21,18 @@ void set_prime_multi_zero(int num){
 int main() {
 	ios::sync_with_stdio(false);
 	cin.tie(NULL); 
-	cout.tie(NULL);    
-	
+	cout.tie(NULL);    	
 	cin >> start >> endN;
-	
 	fill_n(prime, endN+1, 1); 
-	
  	prime[1]=0;
  	set_prime_multi_zero(2);
- 	
 	for(int i=3;i<=endN;){
 		if(is_prime(i)){
 			set_prime_multi_zero(i);
 		}
 		while(prime[++i]==0){
-		}
-					
+		}		
 	}
-	
 	for(int i=start;i<=endN;i++){
 		if(prime[i]){
 			printf("%d ",i);
