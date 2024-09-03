@@ -1,15 +1,8 @@
 #include <iostream>
 using namespace std;
-
 int prime[1000001];
 int start,endN;
-
-void set_prime_multi_zero(int num){
-	int mul=num;
-	while((mul+=num)<=endN){
-		prime[mul]=0;
-	}
-}
+int mul;
 int main() {
 	ios::sync_with_stdio(false);
 	cin.tie(NULL); 
@@ -17,10 +10,16 @@ int main() {
 	cin >> start >> endN;
 	fill_n(prime, endN+1, 1); 
  	prime[1]=0;
- 	set_prime_multi_zero(2);
+ 	mul=2;
+	while((mul+=2)<=endN){
+		prime[mul]=0;
+	}
 	for(int i=2;i*i<=endN;){
 		if(prime[i]){
-			set_prime_multi_zero(i);
+			mul=i;
+			while((mul+=i)<=endN){
+				prime[mul]=0;
+			}
 		}
 		while(prime[++i]==0){
 		}		
