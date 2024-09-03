@@ -10,14 +10,9 @@ int main() {
 	long long s4 = pow(endN,0.25);
     long long s2 = pow(endN,0.5);
 	long long mul;
-	bool* prime = new bool[s2 + 1];
-	
-	
-
+    bool prime[10000001];
+    
 	fill_n(prime, s2+1, 1); 
- 	prime[1]=false;
- 	mul=2;
-
 
 	for(long long i=2;i<=s4;i++){
 		if(prime[i]){
