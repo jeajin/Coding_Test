@@ -19,16 +19,12 @@ int main() {
  	mul=2;
 
 
-	for(long long i=2;i<=s4;){
+	for(long long i=2;i<=s4;i++){
 		if(prime[i]){
-			mul=i*i;
-			do{
+			for(mul=i*i;mul<=s2;mul+=i){
 				prime[mul]=false;
 			}
-			while((mul+=i)<=s2);
-		}
-		while(prime[++i]==0){
-		}		
+		}	
 	}
 	
 	double t;
