@@ -1,7 +1,6 @@
 #include <iostream>
 #include <math.h>
 using namespace std;
-bool prime[10000001];
 int main() {
 	ios::sync_with_stdio(false);
 	cin.tie(NULL); 
@@ -11,15 +10,15 @@ int main() {
 	long long s4 = pow(endN,0.25);
     long long s2 = pow(endN,0.5);
 	long long mul;
+	bool* prime = new bool[s2 + 1];
+	
 	
 
 	fill_n(prime, s2+1, 1); 
  	prime[1]=false;
  	mul=2;
 
-	while((mul+=2)<=s2){
-		prime[mul]=false;
-	}
+
 	for(long long i=2;i<=s4;){
 		if(prime[i]){
 			mul=i*i;
