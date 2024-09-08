@@ -12,15 +12,14 @@ int main() {
 	
 
  	long long temp;
-	long long big = a>b?a:b;
-	long long small = big==a? b:a;
 	
-	while(small!=0){
-		temp  = big %small;
-		big = small;
-		small =temp;	
+	while(b!=0){
+		temp  = a %b;
+		a = b;
+		b =temp;	
 	}
-	while(big--)
+		
+	while(a--)
 	printf("1");
 
 }
