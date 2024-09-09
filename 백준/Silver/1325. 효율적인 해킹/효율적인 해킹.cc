@@ -9,15 +9,15 @@ int answer[max+1];
 int visited[max+2]={0,};
 int n,m,k,x;
 int maxNum = -321;
-
+int ranswer[max+1];
+int tindex=0;
 void dfs(int index){
 	visited[index]=1;
 	for(int i=0;i<edge[index].size();i++){
 		int t = edge[index][i];
 		if(t && !visited[t]){
 			answer[t]++;
-			dfs(t);
-			maxNum = maxNum>answer[t]?maxNum:answer[t];
+			dfs(t);			
 		}
 	}
 }
@@ -40,7 +40,12 @@ int main() {
 	}
 	
 	for(int i=1;i<=n;i++){
-		if(maxNum==answer[i])
-		printf("%d ",i);
+		maxNum= maxNum>answer[i]?maxNum:answer[i];
 	}
+	for(int i=1;i<=n;i++){
+		if(maxNum==answer[i]){
+			printf("%d ",i);
+		}
+	}
+	
 }
