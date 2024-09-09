@@ -1,10 +1,12 @@
 #include <iostream>
 #include <vector>
 #include <queue>
+#include <algorithm>
 
 using namespace std;
 #define max 300000
 vector<int> edge[max+1];
+vector<int> answer;
 int visited[max+1]={0,};
 queue<pair<int, int>> q;
 int n,m,k,x;
@@ -29,8 +31,12 @@ int main() {
         int d = q.front().second;
         q.pop();
 
-        if (now != x && !visited[now]) {
+  		if (now != x && !visited[now]) {
             visited[now] = d;
+            if(d==k){
+            	answer.push_back(now);
+        		continue;
+			}
         }
 
         for (int i = 0; i < edge[now].size(); i++) {
@@ -39,15 +45,13 @@ int main() {
             }
         }
     }
-    int cnt = 0;
-    for (int i = 1; i <= n; i++) {
-        if (visited[i] == k) {
+    
+    if(!answer.empty()){
+    	sort(answer.begin(), answer.end());
+    	for (int i : answer)
             cout << i << endl;
-            cnt++;
-        }
-    }
-    if (cnt == 0) {
-        cout << -1 << endl;
+	}else{
+        cout << -1 << "\n";
     }
 
 }
